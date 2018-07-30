@@ -1,0 +1,7 @@
+\.idea/
+Lib/
+Scripts/
+src/
+pyvenv\.cfg
+config\.json
+pip-selfcheck\.json
