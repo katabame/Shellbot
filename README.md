@@ -1,4 +1,4 @@
-# Shellbot
+# Shellbot for Discord
 
 ### Requirements
 Python 3.6+
