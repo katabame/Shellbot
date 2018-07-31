@@ -28,7 +28,7 @@ class Client(discord.Client):
             print(f'[EXEC] @{message.author}: {command}')
 
             embed = discord.Embed(title='Run')
-            embed.set_footer(text='Shellbot')
+            embed.set_footer(text='[Shellbot](https://github.com/katabame/Shellbot)')
             try:
                 response = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 embed.colour = discord.Colour.green()
