@@ -50,8 +50,8 @@ class Client(discord.Client):
             await message.channel.send(embed=embed)
 
 if __name__ == '__main__':
-    commitlabel = subprocess.check_output(["git", "describe", "--always"]).strip()
-    print('[INFO] Shellbot commit' + commitlabel)
+    commitlabel = subprocess.check_output(["git", "describe", "--always"]).strip().decode()
+    print(f'[INFO] Shellbot commit {commitlabel}')
     print('[LOAD] Starting Shellbot...')
     client = Client()
     client.run(config['token'])
