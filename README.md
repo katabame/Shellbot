@@ -16,5 +16,4 @@ example:
 
 ### WARNING
 * All of commands will running in SHELL, make sure bot-running user is in JAILED environment. (if user is not in jailed environment, your operating system will UNDER ATTACKED by MALICIOUS USER)
-* Currently, this script has NOT timeout feature.
 * ALL OF THIS IS EXPERIMENT. USE THIS AT YOUR OWN RISK.

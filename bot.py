@@ -28,9 +28,9 @@ class Client(discord.Client):
             print(f'[EXEC] @{message.author}: {command}')
 
             embed = discord.Embed(title='Run')
-            embed.set_footer(text='[Shellbot](https://github.com/katabame/Shellbot)')
+            embed.set_author(name='Shellbot', url='https://github.com/katabame/shellbot')
             try:
-                response = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                response = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=1)
                 embed.colour = discord.Colour.green()
                 embed.add_field(name='StdOut', value=f'```{truncate(response.stdout.decode(), 1015)}```')
                 embed.add_field(name='ExitCode', value=response.returncode, inline=True)
@@ -40,6 +40,10 @@ class Client(discord.Client):
                 embed.add_field(name='StdOut', value=f'```{truncate(response.stderr.decode(), 1015)}```')
                 embed.add_field(name='ExitCode', value=response.returncode, inline=True)
                 embed.add_field(name='Status', value='Error')
+            except subprocess.TimeoutExpired as response:
+                embed.colour = discord.Colour.red()
+                embed.add_field(name='StdOut', value=f'```{truncate(response.stderr.decode(), 1015)}```')
+                embed.add_field(name='Status', value='Timeout')
 
             embed.timestamp = datetime.now()
             await message.channel.send(embed=embed)
