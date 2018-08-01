@@ -29,6 +29,7 @@ class Client(discord.Client):
 
             embed = discord.Embed(title='Run')
             embed.set_author(name='Shellbot', url='https://github.com/katabame/shellbot')
+            embed.set_footer(text='Shellbot commit ' + commitlabel)
             try:
                 response = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=1)
                 embed.colour = discord.Colour.green()
@@ -49,6 +50,8 @@ class Client(discord.Client):
             await message.channel.send(embed=embed)
 
 if __name__ == '__main__':
+    commitlabel = subprocess.check_output(["git", "describe", "--always"]).strip()
+    print('[INFO] Shellbot commit' + commitlabel)
     print('[LOAD] Starting Shellbot...')
     client = Client()
     client.run(config['token'])
