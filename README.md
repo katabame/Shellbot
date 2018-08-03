@@ -1,6 +1,6 @@
 # Shellbot for Discord
 
-## What does it
+### What does it
 
 Get *Linux shell* or *Windows cmdline* experience on your Discord server(s) and DM.
 
