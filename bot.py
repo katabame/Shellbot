@@ -31,7 +31,7 @@ class Client(discord.Client):
             embed.set_author(name='Shellbot', url='https://github.com/katabame/shellbot')
             embed.set_footer(text='Shellbot commit ' + commitlabel)
             try:
-                response = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=1)
+                response = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=10)
                 embed.colour = discord.Colour.green()
                 embed.add_field(name='StdOut', value=f'```{truncate(response.stdout.decode(), 1015)}```')
                 embed.add_field(name='ExitCode', value=response.returncode, inline=True)
